@@ -20,4 +20,20 @@ function onClickNumberControl() {
     return;
   }
   const clickedNumber = this.textContent;
+  const isCandidateMove = document.getElementById('candidate-switch').checked;
+
+  if (isCandidateMove) {
+    const candidatesNode = selectedCell.querySelector('.candidates');
+    const candidates = candidatesNode.textContent.split('');
+    const numberIndex = candidates.indexOf(clickedNumber);
+    if (numberIndex === -1) {
+      candidates.push(clickedNumber);
+    } else {
+      candidates.splice(numberIndex, 1);
+    }
+    candidatesNode.textContent = candidates.sort().join('');
+  } else {
+    // not a candidate move
+    selectedCell.querySelector('.value').textContent = clickedNumber;
+  }
 }

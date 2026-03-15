@@ -1,8 +1,6 @@
-document.querySelectorAll('td').forEach((cell) => {
-  const isStandardCell = !cell.classList.contains('given-number');
-  if (isStandardCell) {
-    cell.addEventListener('click', onClickStandardCell);
-  }
+// addEventListener only to standard cells
+document.querySelectorAll('td:not(.given-number)').forEach((cell) => {
+  cell.addEventListener('click', onClickStandardCell);
 });
 
 document.querySelectorAll('.number-control').forEach((numberControl) => {
@@ -33,7 +31,7 @@ function onClickNumberControl() {
     }
     candidatesNode.textContent = candidates.sort().join('');
   } else {
-    // not a candidate move
+    // normal move
     selectedCell.querySelector('.value').textContent = clickedNumber;
   }
 }

@@ -5,7 +5,19 @@ document.querySelectorAll('td').forEach((cell) => {
   }
 });
 
+document.querySelectorAll('.number-control').forEach((numberControl) => {
+  numberControl.addEventListener('click', onClickNumberControl);
+});
+
 function onClickStandardCell() {
   document.querySelector('.selected')?.classList?.remove('selected');
   this.classList.add('selected');
+}
+
+function onClickNumberControl() {
+  const selectedCell = document.querySelector('.selected');
+  if (selectedCell == null) {
+    return;
+  }
+  const clickedNumber = this.textContent;
 }
